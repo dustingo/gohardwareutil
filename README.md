@@ -18,10 +18,9 @@ import (
         "fmt"
 )
 func main(){
-        //CPU cpu:CpuUsage struct
-        cpu := gohardwareutil.CpuInfo()
-        cpuUsedPer := cpu.CpuUsed()
-        fmt.Printf("cpuUsed:%s\n",cpuUsedPer)
+        //CpuInfo returns idle and used percentage
+         cpuidle,cpuused := gohardwareutil.CpuInfo()
+         fmt.Println(cpuidle,cpuused)
         //uname uname:uname struct
         uname := gohardwareutil.Uname()
         fmt.Printf("nodeName:%s\n",uname.NodeName)
