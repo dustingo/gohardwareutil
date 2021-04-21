@@ -14,7 +14,7 @@ import (
 )
 var memInfo  = map[string]float64{}
 // 获取内存
-func MemInfo()(*map[string]float64,error){
+func MemInfo()(map[string]float64,error){
 	file := "/proc/meminfo"
 	f , err := os.Open(file)
 	if err != nil{
@@ -38,7 +38,7 @@ func MemInfo()(*map[string]float64,error){
 		key := parts[0][:len(parts[0])-1]
 		memInfo[key] = floatVal
 	}
-	return &memInfo,nil
+	return memInfo,nil
 }
 // MemTotal 总内存大小
 func MemTotal() float64{
