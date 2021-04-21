@@ -81,7 +81,12 @@ func(c *CpuUsage)CpuTotal()uint64{
 	return (c.USER+c.NICE+c.SYSTEM+c.IDLE+c.IOWAIT+c.IRQ+c.SOFTIRQ+c.STEAL)
 }
 //返回CPU使用率
-func(c *CpuUsage)CpuUsed() string {
+func(c *CpuUsage)CpuUsed(s string) string {
 	//usedCpu := float64(c.IDLE)/float64(c.USER+c.NICE+c.SYSTEM+c.IDLE+c.IOWAIT+c.IRQ+c.SOFTIRQ+c.STEAL) * 100
-	return fmt.Sprintf("%v%%",decimal.NewFromFloatWithExponent(float64(c.IDLE)/float64(c.USER+c.NICE+c.SYSTEM+c.IDLE+c.IOWAIT+c.IRQ+c.SOFTIRQ+c.STEAL) * 100,-2).String())
+	if s == "percentage"{
+		return fmt.Sprintf("%v%%",decimal.NewFromFloatWithExponent(float64(c.IDLE)/float64(c.USER+c.NICE+c.SYSTEM+c.IDLE+c.IOWAIT+c.IRQ+c.SOFTIRQ+c.STEAL) * 100,-2).String())
+	}else{
+		return fmt.Sprintf("%v",decimal.NewFromFloatWithExponent(float64(c.IDLE)/float64(c.USER+c.NICE+c.SYSTEM+c.IDLE+c.IOWAIT+c.IRQ+c.SOFTIRQ+c.STEAL) * 100,-2).String())
+	}
+
 }

@@ -61,6 +61,11 @@ func MemCached()float64{
 	return memInfo["Cached"]
 }
 // 内存使用率
-func MemUsed() string{
-	return fmt.Sprintf("%s%%",decimal.NewFromFloatWithExponent((memInfo["MemTotal"] - memInfo["MemFree"] - memInfo["Buffers"] - memInfo["Cached"])/memInfo["MemTotal"]*100,-2))
+func MemUsed(s string) string{
+	if s == "percentage"{
+		return fmt.Sprintf("%s%%",decimal.NewFromFloatWithExponent((memInfo["MemTotal"] - memInfo["MemFree"] - memInfo["Buffers"] - memInfo["Cached"])/memInfo["MemTotal"]*100,-2))
+	}else{
+		return fmt.Sprintf("%s",decimal.NewFromFloatWithExponent((memInfo["MemTotal"] - memInfo["MemFree"] - memInfo["Buffers"] - memInfo["Cached"])/memInfo["MemTotal"]*100,-2))
+	}
+
 }
