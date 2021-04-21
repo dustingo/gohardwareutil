@@ -25,7 +25,7 @@ func main(){
         //uname uname:uname struct
         uname := gohardwareutil.Uname()
         fmt.Printf("nodeName:%s\n",uname.NodeName)
-        //mem mem:*map[string]float64;可自行取值计算
+        //mem mem:map[string]float64;可自行取值计算
         mem,err :=gohardwareutil.MemInfo()
         if err != nil{
                 panic(err)
